@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
-import {Text,View,StyleSheet,Button} from 'react-native'
+import {Text,View,StyleSheet} from 'react-native'
 import {connect} from 'react-redux'
+import {Button} from 'nachos-ui'
 import {receiveDeckById} from '../actions'
 import * as API from '../utils/api'
 import {objectToArray} from '../utils/utils'
+import {black} from '../utils/colors'
 
 class Deck extends Component {
 
@@ -46,11 +48,11 @@ class Deck extends Component {
 
         const questions_in_deck = objectToArray(deck.questions)
         return(
-          <View style = {{flex:1}}>
-          <Text> {deck.title} </Text>
-          <Text> {questions_in_deck.length}  </Text>
-          <Button title="Add More Questions"  onPress = {this.addMoreQuestion}/>
-          <Button title="Start Quiz" onPress = {this.startQuiz} />
+          <View style = {styles.deckView}>
+          <Text style={styles.cardTitle} > DeckName: {deck.title} </Text>
+          <Text style={styles.questionsCount}> Questions: {questions_in_deck.length}  </Text>
+          <Button   onPress = {this.addMoreQuestion}> New Question</Button>
+          <Button   type='success' onPress = {this.startQuiz} >Start Quiz</Button>
 
           </View>
         );
@@ -65,7 +67,32 @@ class Deck extends Component {
 
 
 }
+const styles = StyleSheet.create({
+  deckView: {
+            flex:1/2,
+            margin:40,
+            alignItems: "stretch",
+            justifyContent: "space-around",
+  },
+  btnStyle: {
+    margin: 50,
 
+  },
+
+  cardTitle : {
+     fontSize: 28,
+     color: black,
+     fontWeight: "400",
+     marginBottom: 0,
+     paddingBottom: 5
+   },
+    questionsCount : {
+     fontSize: 20,
+     fontWeight: "200",
+     paddingBottom: 50
+   }
+
+})
 
 
 function mapStateToProps(deck,{ navigation }) {

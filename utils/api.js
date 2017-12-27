@@ -29,7 +29,7 @@ export function getDeckById(id) {
 
 //saveDeckTitle: take in a single title argument and add it to the decks.
 export function addDeck (newdeck) {
-    clearAll()
+    // clearAll()
    return AsyncStorage.mergeItem (FLASHCARDS_STORAGE_KEY, JSON.stringify({
        // [newdeck.title]:newdeck
        [newdeck.id]:newdeck

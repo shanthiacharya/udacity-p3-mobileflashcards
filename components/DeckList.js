@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { View,Text,FlatList } from 'react-native';
+import { View,Text,FlatList,StyleSheet } from 'react-native';
 import {receiveDecks} from '../actions';
 import {fetchDecks} from '../utils/api'
 import  { objectToArray } from '../utils/utils'
@@ -34,25 +34,33 @@ class DeckList extends Component {
     }
 
 
-    _renderItem ({item})  {
+    _renderItem = ({item}) => {
         return (
-          <Text key={item.id} > {item.title} </Text>
+          <DeckListItem key={item.id} {...item} navigation = {this.props.navigation}/>
         );
     }
 
     render() {
       const {decksList} = this.state
        return (
-          <View>
-           <Text> DeckList </Text>
+          <View style = {styles.maindeckListStyle}>
+
             <FlatList
             data = {decksList}
-            renderItem = {this._renderItem} />
+            renderItem = {this._renderItem}
+            keyExtractor={(item, index) => index} />
           </View>
        );
     }
 }
 
+const styles = StyleSheet.create ({
+  maindeckListStyle: {
+    paddingTop:40,
+    paddingBottom:100
+
+  }
+})
 
 function mapStateToProps ( decks ) {
    // console.log("Map State to Props DeckList: " + decks)

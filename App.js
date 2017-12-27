@@ -7,6 +7,7 @@ import DeckList from './components/DeckList'
 import Deck from './components/Deck'
 import CreateDeck from './components/CreateDeck'
 import AddQuestion from './components/AddQuestion'
+import Quiz from './components/Quiz'
 import reducers from './reducers/index'
 import { Ionicons } from '@expo/vector-icons';
 import { Platform, StatusBar } from 'react-native';
@@ -49,9 +50,11 @@ const Stack = StackNavigator({
   Deck: {
     screen: Deck,
     navigationOptions: {
-      header: null,
       title:"Deck "
     }
+  },
+  Quiz : {
+    screen:Quiz
   }
 })
 
