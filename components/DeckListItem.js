@@ -23,7 +23,7 @@ class DeckListItem extends Component {
          <TouchableOpacity  onPress = {this.handleDeckDisplay} >
           <View key= {id} style ={styles.card}>
              <Text  style ={styles.cardTitle}>  {title} </Text>
-             <Text  style ={styles.questionsCount}>  {questions.length} questions </Text>
+             <Text  style ={styles.questionsCount}>  {questions.length} Cards </Text>
           </View>
           </TouchableOpacity>
         )}

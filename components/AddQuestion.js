@@ -65,7 +65,7 @@ class AddQuestion extends Component {
              value= {this.state.question}
              />
              <Text>  Answer </Text>
-             <TextInput  multiline ={true} numberOfLines = {4} style ={{height:40,borderColor:'gray',borderWidth:1,margin:10}}
+             <TextInput  multiline ={true} numberOfLines = {4} style ={{height:300,borderColor:'gray',borderWidth:1,margin:10}}
                onChangeText = {(answer) => this.setState({answer})}
                value= {this.state.answer}
                />

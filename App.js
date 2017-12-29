@@ -31,7 +31,6 @@ const Tabs = TabNavigator ({
     screen: CreateDeck,
     navigationOptions: {
       tabBarLabel: "New Deck",
-      header: null,
       tabBarIcon: ({focused}) => <Ionicons name="md-add" size={32} style={{ color: focused ? '#33A3F4' : '#949494'}} />,
 
     }
@@ -45,12 +44,15 @@ const Stack = StackNavigator({
     screen: Tabs
   },
   AddQuestion: {
-    screen: AddQuestion
+    screen: AddQuestion,
+    navigationOptions: {
+      title:"Add Question "
+    }
   },
   Deck: {
     screen: Deck,
     navigationOptions: {
-      title:"Deck "
+      title:" "
     }
   },
   Quiz : {

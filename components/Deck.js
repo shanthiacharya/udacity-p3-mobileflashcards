@@ -39,6 +39,10 @@ class Deck extends Component {
       this.props.navigation.navigate ('Quiz', {id:this.state.deckId})
    }
 
+   goBack = () => {
+      this.props.navigation.navigate ('Home')
+   }
+
 
    render(){
 
@@ -51,8 +55,9 @@ class Deck extends Component {
           <View style = {styles.deckView}>
           <Text style={styles.cardTitle} > DeckName: {deck.title} </Text>
           <Text style={styles.questionsCount}> Questions: {questions_in_deck.length}  </Text>
-          <Button   onPress = {this.addMoreQuestion}> New Question</Button>
-          <Button   type='success' onPress = {this.startQuiz} >Start Quiz</Button>
+          <Button onPress = {this.addMoreQuestion}> New Question</Button>
+          <Button type='success' onPress = {this.startQuiz} >Start Quiz</Button>
+          <Button type='danger' onPress = {this.goBack} >Go Back</Button>
 
           </View>
         );
@@ -69,16 +74,14 @@ class Deck extends Component {
 }
 const styles = StyleSheet.create({
   deckView: {
-            flex:1/2,
-            margin:40,
-            alignItems: "stretch",
-            justifyContent: "space-around",
+    flex:1/2,
+    margin:40,
+    alignItems: "stretch",
+    justifyContent: "space-around",
   },
   btnStyle: {
     margin: 50,
-
   },
-
   cardTitle : {
      fontSize: 28,
      color: black,
