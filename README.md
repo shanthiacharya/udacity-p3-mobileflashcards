@@ -14,9 +14,9 @@ The application requires yarn or npm install and yarn start to launch.
 * npm install
 * yarn start
 
-## If needed run the following command if yarn gives error:
-## Unable to start server
-## See https://git.io/v5vcn for more information, either install watchman or ## run the following snippet:
+If needed run the following command if yarn gives error:
+ Unable to start server
+ See https://git.io/v5vcn for more information, either install watchman or ## run the following snippet:
 * sudo sysctl -w kern.maxfiles=5242880
 * sudo sysctl -w kern.maxfilesperproc=524288
 
