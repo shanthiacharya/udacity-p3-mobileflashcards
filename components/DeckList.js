@@ -24,11 +24,11 @@ class DeckList extends Component {
       fetchDecks().then((decks) =>{
         dispatch(receiveDecks(decks))
         if (decks) {
-            const decksList = Object.values(JSON.parse(decks))
-            // decksList.map((d) => {
-            //   d.key = d.id
-            // })
-            // console.log("GetDeckList:"+ decksList)
+            const decksList = Object.values(decks)
+            decksList.map((d) => {
+              d.key = d.id
+            })
+
             this.setState(() => ({ decksList }))
         }
       })
@@ -90,7 +90,7 @@ const styles = StyleSheet.create ({
 })
 
 function mapStateToProps ( decks ) {
-   // console.log("Map State to Props DeckList: " + decks)
+   
     return {
          decks
        }

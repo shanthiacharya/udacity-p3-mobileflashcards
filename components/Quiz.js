@@ -6,7 +6,7 @@ import * as API from '../utils/api'
 import {objectToArray} from '../utils/utils'
 import {Button} from 'nachos-ui'
 import {black} from '../utils/colors'
-
+import FinalScores from './FinalScores'
 class Quiz extends Component {
 
   constructor (props){
@@ -55,39 +55,35 @@ class Quiz extends Component {
       if (deck){
         const questions_in_deck = objectToArray(deck.questions)
         return (
-          <View style={{flex:1}}>
+          <View style={styles.deckView}>
           {(questionIndex <  questions_in_deck.length) ?
           <View style={{flex:1}} >
               <View style={{flex:1}}>
                   <Text style ={styles.cardTitle}> {deck.title} </Text>
                   <Text style ={styles.questionsCount}>  Correct Answers :{this.state.correctAnswerCount} </Text>
-                  <Text style ={styles.fieldTitle}> Question {questionIndex + 1 } of {questions_in_deck.length} </Text>
-                  <Text style ={styles.fieldTitle}> {questions_in_deck[questionIndex].question} </Text>
+                  <Text style ={styles.fieldTitle}> Card {questionIndex + 1 } of {questions_in_deck.length} </Text>
+                  <Text style ={styles.card}> {questions_in_deck[questionIndex].question} </Text>
                   { showAnswer &&
 
-                    (  <View style={{flex:1/4, backgroundColor:'#ffffff'}}>
-                       <Text style = {styles.fieldTitle}> Answer </Text>
-                       <Text> {questions_in_deck[questionIndex].answer} </Text>
+                    (
 
-                     </View>
+                       <Text style ={styles.card}> {questions_in_deck[questionIndex].answer} </Text>
+
+
                    )
                    }
                   <Button style={btnStyle}   onPress = {this.toggleShowAnswer}> Show Answer </Button>
 
                   <View style ={styles.replybuttons}>
-                     <Button style={newStyle2}  type='danger' onPress = {this.handleIncorrect} > Incorrect </Button>
-                    <Button type='success'  onPress = {this.handleCorrect}> Correct </Button>
+                     <Button style={newStyle2}  type='danger' iconName='md-close' onPress = {this.handleIncorrect} > Incorrect </Button>
+                    <Button type='success' iconName='md-checkmark'  onPress = {this.handleCorrect}> Correct </Button>
 
                   </View>
               </View>
 
           </View> :
-             <View style={{flex:1}}>
-                  <Text> Your Results : {Math.round(this.state.correctAnswerCount/questions_in_deck.length) *100 }  %</Text>
-                  <Button type='success' onPress = {this.startQuiz}> Retake Quiz </Button>
-                  <Button  onPress = {this.gobacktoDeck}> Back to Deck </Button>
-             </View>
-         }
+             <FinalScores correctpoints={this.state.correctAnswerCount} totalquestions = {questions_in_deck.length} navigation = {this.props.navigation} id ={this.state.deckId}/>
+          }
         </View>
         )
       }
@@ -104,7 +100,6 @@ const btnStyle = {
   width:250,
   justifyContent:'center',
   alignItems: "center",
-
 }
 const newStyle2 = {
   marginRight:20
@@ -121,7 +116,7 @@ const styles = StyleSheet.create ({
     },
     deckView: {
       flex:1,
-      margin:40,
+      margin:20,
       alignItems: "stretch",
       justifyContent: "space-around",
     },
@@ -129,6 +124,16 @@ const styles = StyleSheet.create ({
      margin:10
     },
 
+    card: {
+    margin: 15,
+    backgroundColor: "#fff",
+    shadowOffset: { width: 0, height: 3 },
+    shadowColor: "#000",
+    shadowRadius: 2,
+    shadowOpacity: 0.2,
+    padding: 15,
+    paddingBottom: 25
+  },
 
 
     cardTitle : {
@@ -157,7 +162,7 @@ const styles = StyleSheet.create ({
 
 
 function mapStateToProps(deck) {
-  console.log ("Deck Component: " + JSON.stringify(deck))
+
   return {
      deck
   }

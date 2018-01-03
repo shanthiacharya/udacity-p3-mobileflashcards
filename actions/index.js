@@ -18,9 +18,3 @@ export const addDeck = (deck) => ({
   type:ADD_DECK,
   deck
 })
-
-// export const getDeckById = (id) => dispatch => (
-//   API.getDeckById(id)
-//   .then (deck => { console.log(JSON.stringify(deck))} )
-//
-// )

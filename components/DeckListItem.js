@@ -8,13 +8,13 @@ class DeckListItem extends Component {
 
     componentDidMount(){
 
-     console.log("DeckList:" + JSON.stringify(this.props))
+     // console.log("DeckList:" + JSON.stringify(this.props))
 
     }
 
     handleDeckDisplay = () => {
-      const {navigation,id} = this.props
-      navigation.navigate('Deck', {id:id})
+      const {navigation,id,title} = this.props
+      navigation.navigate('Deck', {id:id,title:title})
     }
 
     render() {

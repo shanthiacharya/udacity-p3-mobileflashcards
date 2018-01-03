@@ -10,6 +10,7 @@ import AddQuestion from './components/AddQuestion'
 import Quiz from './components/Quiz'
 import reducers from './reducers/index'
 import { Ionicons } from '@expo/vector-icons';
+import {setLocalNotification} from './utils/notification'
 import { Platform, StatusBar } from 'react-native';
 
 const store = createStore(reducers)
@@ -62,6 +63,11 @@ const Stack = StackNavigator({
 
 
 export default class App extends React.Component {
+
+  componentDidMount() {
+    setLocalNotification ()
+  }
+
   render() {
 
     return (

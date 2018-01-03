@@ -30,7 +30,6 @@ class Deck extends Component {
     }
 
    addMoreQuestion = () => {
-     console.log (this.props)
       this.props.navigation.navigate ('AddQuestion', {id:this.state.deckId})
 
    }
@@ -99,7 +98,7 @@ const styles = StyleSheet.create({
 
 
 function mapStateToProps(deck,{ navigation }) {
-  console.log ("Deck Component: " + JSON.stringify(deck))
+
   return {
      deck
   }

@@ -21,7 +21,7 @@ class CreateDeck extends Component {
 
   createDeck = () =>  {
 
-    console.log("create Deck :" + this.state.title)
+    
     const {dispatch} = this.props
     const {title,emptyfield} = this.state
     let deckId = uniqueNumber()

@@ -6,7 +6,6 @@ export default function decks (state= {} , action) {
     case RECEIVE_DECKS :
       return action.decks
     case RECEIVE_DECK_BY_ID:
-      console.log("Reducer DeckbyId: " +JSON.stringify(action.deck) );
       return action.deck
       break;
     default:

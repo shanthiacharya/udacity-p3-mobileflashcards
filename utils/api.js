@@ -1,5 +1,5 @@
 import {AsyncStorage} from 'react-native'
-import {FLASHCARDS_STORAGE_KEY} from './_decks'
+import {FLASHCARDS_STORAGE_KEY,populateDecks} from './_decks'
 import {uniqueNumber} from './utils'
 import {objectToArray} from './utils'
 
@@ -13,7 +13,9 @@ export function clearAll () {
 }
 //getDecks: return all of the decks along with their titles, questions, and answers.
 export function fetchDecks () {
+  clearAll()
     return AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY)
+      .then (populateDecks)
 }
 
 //getDeck: take in a single id argument and return the deck associated with that id.
@@ -21,7 +23,7 @@ export function getDeckById(id) {
        return AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY)
       .then((results) => {
             const data = JSON.parse(results)
-            let deck = data[id]
+            let deck = data[id]  
             return deck
         })
 }
